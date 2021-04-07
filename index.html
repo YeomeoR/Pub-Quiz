@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Trivia Quiz</title>
+  </head>
+  <body>
+    <div class="bd-example">
+      <div
+        id="carouselExampleCaptions"
+        class="carousel slide"
+        data-ride="carousel"
+      >
+        <ol class="carousel-indicators"></ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/question-mark-icon-on-white-puzzle-royalty-free-image-917901148-1558452934.jpg?crop=1.00xw:0.752xh;0,0.137xh&resize=1200:*"
+              class="d-block w-100"
+              alt="Quiz"
+            />
+            <div class="carousel-caption d-none d-md-inline-block">
+                <h1 id="title">Rob's Pub Quiz</h1>
+              <div class="container">
+                <button class="random category">Random</button>
+                <button class="film category">Film</button>
+                <button class="music category">Music</button>
+                <button class="tv category">TV</button>
+                <button class="scienceAndNature category">
+                  Science and Nature
+                </button>
+                <button class="mythology category">Mythology</button>
+                <button class="sport category">Sport</button>
+                <button class="geography category">Geography</button>
+                <button class="history category">History</button>
+                <button class="politics category">Politics</button>
+
+                <div class="root">
+                  <h5>Question:</h5>
+                </div>
+
+                <p id="category"></p>
+                <p id="difficulty"></p>
+                <p id="question"></p>
+
+                <button class="quiz" id="answer1"></button>
+                <button class="quiz" id="answer2"></button>
+                <button class="quiz" id="answer3"></button>
+                <button class="quiz" id="answer4"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JScript -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="main.js"></script>
+  </body>
+</html>
