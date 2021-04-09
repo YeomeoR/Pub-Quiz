@@ -49,7 +49,7 @@ h5 {
   text-shadow: 1px 1px 1px black;
   width: 150px;
   border-radius: 5px;
-  background-color: rgba(105, 139, 113, 0.8); 
+  background-color: rgba(105, 139, 113, 0.8);
   color: red;
 }
 #content {
@@ -119,8 +119,10 @@ p {
   margin: 10px;
   align-items: center;
   display: flex;
-  border-radius: 5px;
   padding: 1rem;
   font-size: 1.5rem;
   text-align: center;
+}
+.answers {
+  border-radius: 5px;
 }
