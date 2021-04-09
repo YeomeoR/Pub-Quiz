@@ -186,6 +186,10 @@ correctAnswer.addEventListener('click', (e) => {
 
   // add a counter to the screen
   document.getElementById('score').innerHTML = counter;
+  document.getElementById('score').style.color = '#fff';
+  document.getElementById('score').style.fontSize = '1.5rem';
+  document.getElementById('score').style.textShadow = '1px 1px 1px black';
+
   // add score/counter to localStorage
   localStorage.setItem('score', counter);
 
@@ -213,6 +217,8 @@ function gameOver() {
   document.querySelector(
     '.scorecard',
   ).innerHTML = `GAME OVER! You scored: ${counter}`;
+  document.querySelector('.scorecard').style.color = 'red'
+  document.querySelector('.scorecard').style.fontSize = '3rem'
   // add score to leaderboard if higher than other 10. Take from localStorage(?) send to firestore.
 }
 
