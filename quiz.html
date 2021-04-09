@@ -43,17 +43,42 @@
                 <p id="difficulty"></p>
                 <p id="question"></p>
 <div class="quiz">
-                <button id="answer1"></button>
-                <button id="answer2"></button>
-                <button id="answer3"></button>
-                <button id="answer4"></button>
+                <button class="answers" id="answer1"></button>
+                <button class="answers" id="answer2"></button>
+                <button class="answers" id="answer3"></button>
+                <button class="answers" id="answer4"></button>
               </div>
-              </div>
-            </div>
-          
+              <!-- Button trigger modal -->
+<button type="button" id="score" class="btn" data-toggle="modal" data-target="#exampleModalCenter">
+  
+</button>
 
-    <!-- Bootstrap JScript -->
-    <script
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- inside the modal-content -->
+        <h5 class="modal-title scorecard" id="exampleModalCenterTitle"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+     
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Leaderboard</button>
+        <button type="button" id="start-new" class="btn btn-primary">Start New Game</button>
+      </div>
+    </div>
+  </div>
+</div>
+            </div>
+            </div>
+              
+              
+              
+              <!-- Bootstrap JScript -->
+              <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
       crossorigin="anonymous"
@@ -70,4 +95,5 @@
     ></script>
     <script src="pubMain.js"></script>
   </body>
-</html>
+  </html>
+  
