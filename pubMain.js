@@ -17,6 +17,8 @@ const continueBtn = document.getElementById('continue');
 const rating = document.getElementById('rating');
 const close = document.querySelector('.close')
 const difficulty = document.querySelector('#difficulty');
+const paras = document.querySelector('p')
+const btns = document.querySelector('.answers')
 
 // grab the answer components
 const button1 = document.querySelector('#answer1');
@@ -37,6 +39,7 @@ geography.addEventListener('click', sendApiRequestGeography);
 history.addEventListener('click', sendApiRequestHistory);
 politics.addEventListener('click', sendApiRequestPolitics);
 newGame.addEventListener('click', reload);
+continueBtn.addEventListener('click', reset)
 
 ////////////////////////////////////////////////////
 // send api requests for each category
@@ -234,7 +237,7 @@ correctAnswer.addEventListener('click', (e) => {
   counter++;
 
   // add a counter to the screen
-  document.getElementById('score').innerHTML = counter;
+  document.getElementById('score').innerHTML = localStorage.getItem('score');
   document.getElementById('score').style.color = '#fff';
   document.getElementById('score').style.fontSize = '1.5rem';
   document.getElementById('score').style.textShadow = '1px 1px 1px black';
@@ -243,7 +246,7 @@ correctAnswer.addEventListener('click', (e) => {
   localStorage.setItem('score', counter);
 
   // reset the page
-  
+  setTimeout(() => {reset()},4000)
   // sendApiRequest(); to the same category as the previous question? or delete this function call
 });
 
@@ -253,21 +256,21 @@ button2.addEventListener('click', () => {
   button2.style.backgroundColor = 'red'
   setTimeout(() => {
     gameOver()
-  }, 2000)
+  }, 1000)
 });
 button3.addEventListener('click', () => {
   console.log('Incorrect Answer. GAME OVER!');
   button3.style.backgroundColor = 'red'
   setTimeout(() => {
     gameOver()
-  }, 2000)
+  }, 1000)
 });
 button4.addEventListener('click', () => {
   button4.style.backgroundColor = 'red'
   console.log('Incorrect Answer. GAME OVER!');
   setTimeout(() => {
     gameOver()
-  }, 2000)
+  }, 1000)
 });
 
 function gameOver() {
@@ -286,6 +289,19 @@ function gameOver() {
     reload();
   }, 7000)
   // Now we need to add score to leaderboard if higher than other 10. Take from localStorage(?) send to firestore.
+}
+// load a blank page 
+function reset() {
+  paras.innerText = 'Choose a category for your next question';
+  button1.innerHTML = ''
+  button2.innerHTML = ''
+  button3.innerHTML = ''
+  button4.innerHTML = ''
+  document.getElementById('score').innerHTML = localStorage.getItem('score');
+  document.getElementById('score').style.color = '#fff';
+  document.getElementById('score').style.fontSize = '1.5rem';
+  document.getElementById('score').style.textShadow = '1px 1px 1px black';
+
 }
 
 function reload() {

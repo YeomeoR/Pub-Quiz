@@ -30,9 +30,9 @@
       >
         <div class="buttons">
           <select name="rating" id="rating">
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
+            <option value="easy" class="btn-success">Easy</option>
+            <option value="medium" class="btn-warning">Medium</option>
+            <option value="hard" class="btn-danger">Hard</option>
           </select>
 
           <button class="random category">Random</button>
@@ -102,10 +102,11 @@
                 </button>
                 <button
                   type="button"
-                  class="btn btn-secondary"
+                  id="see-it"
+                  class="btn btn-warning"
                   data-dismiss="modal"
                 >
-                  Leaderboard
+                  See The Answer
                 </button>
 
                 <button
