@@ -16,6 +16,7 @@ const newGame = document.getElementById('start-new');
 const continueBtn = document.getElementById('continue');
 const rating = document.getElementById('rating');
 const close = document.querySelector('.close')
+const difficulty = document.querySelector('#difficulty');
 
 // grab the answer components
 const button1 = document.querySelector('#answer1');
@@ -162,6 +163,13 @@ async function sendApiRequestPolitics() {
 //////////////////////////////////////////
 // api data rendering
 function useApiData(data) {
+  if (rating.value === 'easy') {
+    difficulty.style.backgroundColor = 'green'
+  } else if (rating.value === 'medium') {
+    difficulty.style.backgroundColor = 'orange'
+  } else {
+    difficulty.style.backgroundColor = 'red'
+  }
   document.querySelector(
     '#category',
   ).innerHTML = `Category: ${data.results[0].category}`;
