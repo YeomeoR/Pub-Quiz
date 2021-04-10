@@ -15,10 +15,11 @@ const politics = document.querySelector('.politics');
 const newGame = document.getElementById('start-new');
 const continueBtn = document.getElementById('continue');
 const rating = document.getElementById('rating');
-const close = document.querySelector('.close')
+const close = document.querySelector('.close');
 const difficulty = document.querySelector('#difficulty');
-const paras = document.querySelector('p')
-const btns = document.querySelector('.answers')
+const paras = document.querySelector('p');
+const btns = document.querySelector('.answers');
+const questionBar = document.querySelector('#question');
 
 // grab the answer components
 const button1 = document.querySelector('#answer1');
@@ -39,12 +40,11 @@ geography.addEventListener('click', sendApiRequestGeography);
 history.addEventListener('click', sendApiRequestHistory);
 politics.addEventListener('click', sendApiRequestPolitics);
 newGame.addEventListener('click', reload);
-continueBtn.addEventListener('click', reset)
+continueBtn.addEventListener('click', reset);
 
 ////////////////////////////////////////////////////
 // send api requests for each category
 async function sendApiRequestRandom() {
- 
   let res = await fetch(
     `https://opentdb.com/api.php?amount=1&category=11&difficulty=${rating.value}&type=multiple`,
   );
@@ -167,15 +167,12 @@ async function sendApiRequestPolitics() {
 // api data rendering
 function useApiData(data) {
   if (rating.value === 'easy') {
-    difficulty.style.backgroundColor = 'green'
+    difficulty.style.backgroundColor = 'green';
   } else if (rating.value === 'medium') {
-    difficulty.style.backgroundColor = 'orange'
+    difficulty.style.backgroundColor = 'orange';
   } else {
-    difficulty.style.backgroundColor = 'red'
+    difficulty.style.backgroundColor = 'red';
   }
-
-
-  
 
   document.querySelector(
     '#category',
@@ -235,9 +232,9 @@ correctAnswer.addEventListener('click', (e) => {
 
   // add 1 to a score counter. Need to know where to send this and store it between renders. currently going to localStorage. db?
   if (rating.value === 'easy') {
-    counter +=1
+    counter += 1;
   } else if (rating.value === 'medium') {
-    counter += 2
+    counter += 2;
   } else if (rating.value === 'hard') {
     counter += 3;
   }
@@ -253,36 +250,37 @@ correctAnswer.addEventListener('click', (e) => {
   localStorage.setItem('score', counter);
 
   // reset the page
-  setTimeout(() => {reset()},4000)
+  setTimeout(() => {
+    reset();
+  }, 4000);
   // sendApiRequest(); to the same category as the previous question? or delete this function call
 });
 
 //listen for a click on the incorrect_answers buttons
 button2.addEventListener('click', () => {
   console.log('Incorrect Answer. GAME OVER!');
-  button2.style.backgroundColor = 'red'
+  button2.style.backgroundColor = 'red';
   setTimeout(() => {
-    gameOver()
-  }, 1000)
+    gameOver();
+  }, 1000);
 });
 button3.addEventListener('click', () => {
   console.log('Incorrect Answer. GAME OVER!');
-  button3.style.backgroundColor = 'red'
+  button3.style.backgroundColor = 'red';
   setTimeout(() => {
-    gameOver()
-  }, 1000)
+    gameOver();
+  }, 1000);
 });
 button4.addEventListener('click', () => {
-  button4.style.backgroundColor = 'red'
+  button4.style.backgroundColor = 'red';
   console.log('Incorrect Answer. GAME OVER!');
   setTimeout(() => {
-    gameOver()
-  }, 1000)
+    gameOver();
+  }, 1000);
 });
 
 function gameOver() {
-  
-  button1.style.backgroundColor = 'green'
+  button1.style.backgroundColor = 'green';
   console.log('Game Over!');
   document.getElementById('score').click();
   document.querySelector(
@@ -294,21 +292,21 @@ function gameOver() {
   close.remove();
   setTimeout(() => {
     reload();
-  }, 7000)
+  }, 7000);
   // Now we need to add score to leaderboard if higher than other 10. Take from localStorage(?) send to firestore.
 }
-// load a blank page 
+// load a blank page
 function reset() {
   paras.innerText = 'Choose a DIFFICULTY and CATEGORY for your next question';
-  button1.innerHTML = ''
-  button2.innerHTML = ''
-  button3.innerHTML = ''
-  button4.innerHTML = ''
+  button1.innerHTML = '';
+  button2.innerHTML = '';
+  button3.innerHTML = '';
+  button4.innerHTML = '';
+  questionBar.innerHTML = '';
   document.getElementById('score').innerHTML = localStorage.getItem('score');
   document.getElementById('score').style.color = '#fff';
   document.getElementById('score').style.fontSize = '1.5rem';
   document.getElementById('score').style.textShadow = '1px 1px 1px black';
-
 }
 
 function reload() {
