@@ -20,6 +20,7 @@ const difficulty = document.querySelector('#difficulty');
 const paras = document.querySelector('p');
 const btns = document.querySelector('.answers');
 const questionBar = document.querySelector('#question');
+const categoryBar = document.querySelector('#category')
 
 // grab the answer components
 const button1 = document.querySelector('#answer1');
@@ -303,6 +304,8 @@ function reset() {
   button3.innerHTML = '';
   button4.innerHTML = '';
   questionBar.innerHTML = '';
+  categoryBar.style.backgroundColor = 'yellow'
+  categoryBar.style.color = 'red'
   document.getElementById('score').innerHTML = localStorage.getItem('score');
   document.getElementById('score').style.color = '#fff';
   document.getElementById('score').style.fontSize = '1.5rem';
