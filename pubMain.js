@@ -170,6 +170,10 @@ function useApiData(data) {
   } else {
     difficulty.style.backgroundColor = 'red'
   }
+
+
+  
+
   document.querySelector(
     '#category',
   ).innerHTML = `Category: ${data.results[0].category}`;
@@ -246,15 +250,24 @@ correctAnswer.addEventListener('click', (e) => {
 //listen for a click on the incorrect_answers buttons
 button2.addEventListener('click', () => {
   console.log('Incorrect Answer. GAME OVER!');
-  gameOver();
+  button2.style.backgroundColor = 'red'
+  setTimeout(() => {
+    gameOver()
+  }, 2000)
 });
 button3.addEventListener('click', () => {
   console.log('Incorrect Answer. GAME OVER!');
-  gameOver();
+  button3.style.backgroundColor = 'red'
+  setTimeout(() => {
+    gameOver()
+  }, 2000)
 });
 button4.addEventListener('click', () => {
+  button4.style.backgroundColor = 'red'
   console.log('Incorrect Answer. GAME OVER!');
-  gameOver();
+  setTimeout(() => {
+    gameOver()
+  }, 2000)
 });
 
 function gameOver() {
