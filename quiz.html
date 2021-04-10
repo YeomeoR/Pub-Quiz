@@ -10,75 +10,120 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Creepster&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="pubStyle.css" />
     <title>Trivia Quiz</title>
   </head>
   <body>
     <div class="container">
-                <h1 id="title">Horrible Pub Quiz</h1>
-              <div class="container" style="background-image: url(https://i.pinimg.com/originals/38/44/86/384486f4793a9a36e9b38b4e30ffedcb.jpg)" cover no-repeat center alt="Quiz">
-              <div class="buttons">
-                <button class="random category">Random</button>
-                <button class="film category">Film</button>
-                <button class="music category">Music</button>
-                <button class="tv category">TV</button>
-                <button class="scienceAndNature category">
-                  Science and Nature
+      <h1 id="title">Horrible Pub Quiz</h1>
+      <div id="image"
+        class="container"
+        style="
+          background-image: url(https://i.pinimg.com/originals/38/44/86/384486f4793a9a36e9b38b4e30ffedcb.jpg) ;
+        "
+        
+        alt="Quiz"
+      >
+        <div class="buttons">
+          <!-- put a difficulty selector here? -->
+          
+          <select name="rating" id="rating">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        
+         
+          <button class="random category">Random</button>
+          <button class="film category">Film</button>
+          <button class="music category">Music</button>
+          <button class="tv category">TV</button>
+          <button class="scienceAndNature category">Science and Nature</button>
+          <button class="mythology category">Mythology</button>
+          <button class="sport category">Sport</button>
+          <button class="geography category">Geography</button>
+          <button class="history category">History</button>
+          <button class="politics category">Politics</button>
+        </div>
+
+        <div class="root">
+          <h5>Question:</h5>
+        </div>
+
+        <p id="category"></p>
+        <p id="difficulty"></p>
+        <p id="question"></p>
+        <div class="quiz">
+          <button class="answers" id="answer1"></button>
+          <button class="answers" id="answer2"></button>
+          <button class="answers" id="answer3"></button>
+          <button class="answers" id="answer4"></button>
+        </div>
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          id="score"
+          class="btn"
+          data-toggle="modal"
+          data-target="#exampleModalCenter"
+        ></button>
+
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="exampleModalCenter"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalCenterTitle"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <!-- inside the modal-content -->
+                <h5
+                  class="modal-title scorecard"
+                  id="exampleModalCenterTitle"
+                ></h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
                 </button>
-                <button class="mythology category">Mythology</button>
-                <button class="sport category">Sport</button>
-                <button class="geography category">Geography</button>
-                <button class="history category">History</button>
-                <button class="politics category">Politics</button>
-                </div>
-
-
-                <div class="root">
-                  <h5>Question:</h5>
-                </div>
-
-                <p id="category"></p>
-                <p id="difficulty"></p>
-                <p id="question"></p>
-<div class="quiz">
-                <button class="answers" id="answer1"></button>
-                <button class="answers" id="answer2"></button>
-                <button class="answers" id="answer3"></button>
-                <button class="answers" id="answer4"></button>
               </div>
-              <!-- Button trigger modal -->
-<button type="button" id="score" class="btn" data-toggle="modal" data-target="#exampleModalCenter">
-  
-</button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <!-- inside the modal-content -->
-        <h5 class="modal-title scorecard" id="exampleModalCenterTitle"></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-     
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Leaderboard</button>
-        <button type="button" id="start-new" class="btn btn-secondary">Start New Game</button>
+              <div class="modal-footer">
+                <button type="button" id="start-new" class="btn btn-secondary">
+                  Start New Game
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Leaderboard
+                </button>
+                
+                <button type="button" id="continue" class="btn btn-success" data-dismiss="modal">
+                  CONTINUE -->
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-            </div>
-            </div>
-              
-              
-              
-              <!-- Bootstrap JScript -->
-              <script
+
+    <!-- Bootstrap JScript -->
+    <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
       crossorigin="anonymous"
@@ -95,5 +140,4 @@
     ></script>
     <script src="pubMain.js"></script>
   </body>
-  </html>
-  
+</html>

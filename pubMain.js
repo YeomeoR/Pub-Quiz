@@ -1,4 +1,5 @@
-// window.onload = sendApiRequest;
+// window.onload = sendApiRequest; *** deprecated ***
+
 // grab different btns to send different requests
 const title = document.querySelector('#title');
 const random = document.querySelector('.random');
@@ -12,14 +13,17 @@ const geography = document.querySelector('.geography');
 const history = document.querySelector('.history');
 const politics = document.querySelector('.politics');
 const newGame = document.getElementById('start-new');
-// grab the components
-// const react = document.querySelector('.root'); not needed?
+const continueBtn = document.getElementById('continue');
+const rating = document.getElementById('rating');
+
+// grab the answer components
 const button1 = document.querySelector('#answer1');
 const button2 = document.querySelector('#answer2');
 const button3 = document.querySelector('#answer3');
 const button4 = document.querySelector('#answer4');
+// const react = document.querySelector('.root'); Use a React.js component?
 
-// add event listeners
+// event listeners
 random.addEventListener('click', sendApiRequestRandom);
 film.addEventListener('click', sendApiRequestFilm);
 music.addEventListener('click', sendApiRequestMusic);
@@ -32,97 +36,134 @@ history.addEventListener('click', sendApiRequestHistory);
 politics.addEventListener('click', sendApiRequestPolitics);
 newGame.addEventListener('click', reload);
 
-// send api requests
-async function sendApiRequestRandom() {
-  let res = await fetch('https://opentdb.com/api.php?amount=1');
-  console.log(res);
-  const data = await res.json();
-  console.log(data);
-  // call the next function
-  useApiData(data);
-  title.remove();
-}
-async function sendApiRequestFilm() {
-  let res = await fetch('https://opentdb.com/api.php?amount=1&category=11');
-  console.log(res);
-  const data = await res.json();
-  console.log(data);
-  // call the next function
-  useApiData(data);
-  title.remove();
-}
-async function sendApiRequestMusic() {
-  let res = await fetch('https://opentdb.com/api.php?amount=1&category=12');
-  console.log(res);
-  const data = await res.json();
-  console.log(data);
-  // call the next function
-  useApiData(data);
-  title.remove();
-}
-async function sendApiRequestTv() {
-  let res = await fetch('https://opentdb.com/api.php?amount=1&category=14');
-  console.log(res);
-  const data = await res.json();
-  console.log(data);
-  // call the next function
-  useApiData(data);
-  title.remove();
-}
-async function sendApiRequestScienceAndNature() {
-  let res = await fetch('https://opentdb.com/api.php?amount=1&category=17');
-  console.log(res);
-  const data = await res.json();
-  console.log(data);
-  // call the next function
-  useApiData(data);
-  title.remove();
-}
-async function sendApiRequestMythology() {
-  let res = await fetch('https://opentdb.com/api.php?amount=1&category=20');
-  console.log(res);
-  const data = await res.json();
-  console.log(data);
-  // call the next function
-  useApiData(data);
-  title.remove();
-}
-async function sendApiRequestSport() {
-  let res = await fetch('https://opentdb.com/api.php?amount=1&category=21');
-  console.log(res);
-  const data = await res.json();
-  console.log(data);
-  // call the next function
-  useApiData(data);
-  title.remove();
-}
 
+// function rating() {
+//   var1 = 'difficulty=easy'
+// }
+
+
+// send api requests for each category
+async function sendApiRequestRandom() {
+ 
+  // console.log(rating)
+  let res = await fetch(
+    `https://opentdb.com/api.php?amount=1&category=11&difficulty=${rating.value}&type=multiple`,
+  );
+
+  console.log(res);
+  const data = await res.json();
+  console.log(data);
+  // call the next function
+  useApiData(data);
+  // title.remove();
+}
+//11
+async function sendApiRequestFilm() {
+  let res = await fetch(
+    `https://opentdb.com/api.php?amount=1&category=11&difficulty=${rating.value}&type=multiple`,
+  );
+  console.log(res);
+  const data = await res.json();
+  console.log(data);
+  // call the next function
+  useApiData(data);
+  // title.remove();
+}
+// 12
+async function sendApiRequestMusic() {
+  let res = await fetch(
+    `https://opentdb.com/api.php?amount=1&category=12&difficulty=${rating.value}&type=multiple`,
+  );
+  console.log(res);
+  const data = await res.json();
+  console.log(data);
+  // call the next function
+  useApiData(data);
+  // title.remove();
+}
+//14
+async function sendApiRequestTv() {
+  let res = await fetch(
+    `https://opentdb.com/api.php?amount=1&category=14&difficulty=${rating.value}&type=multiple`,
+  );
+  console.log(res);
+  const data = await res.json();
+  console.log(data);
+  // call the next function
+  useApiData(data);
+  // title.remove();
+}
+//17
+async function sendApiRequestScienceAndNature() {
+  let res = await fetch(
+    `https://opentdb.com/api.php?amount=1&category=17&difficulty=${rating.value}&type=multiple`,
+  );
+  console.log(res);
+  const data = await res.json();
+  console.log(data);
+  // call the next function
+  useApiData(data);
+  // title.remove();
+}
+//20
+async function sendApiRequestMythology() {
+  let res = await fetch(
+    `https://opentdb.com/api.php?amount=1&category=20&difficulty=${rating.value}&type=multiple`,
+  );
+  console.log(res);
+  const data = await res.json();
+  console.log(data);
+  // call the next function
+  useApiData(data);
+  // title.remove();
+}
+//21
+async function sendApiRequestSport() {
+  let res = await fetch(
+    `https://opentdb.com/api.php?amount=1&category=21&difficulty=${rating.value}&type=multiple`,
+  );
+  console.log(res);
+  const data = await res.json();
+  console.log(data);
+  // call the next function
+  useApiData(data);
+  // title.remove();
+}
+//22
 async function sendApiRequestGeography() {
-  let res = await fetch('https://opentdb.com/api.php?amount=1&category=22');
+  let res = await fetch(
+    `https://opentdb.com/api.php?amount=1&category=22&difficulty=${rating.value}&type=multiple`,
+  );
   console.log(res);
   const data = await res.json();
   console.log(data);
   // call the next function
   useApiData(data);
-  title.remove();
+  // title.remove();
 }
+//23
 async function sendApiRequestHistory() {
-  let res = await fetch('https://opentdb.com/api.php?amount=1&category=23');
+  let res = await fetch(
+    `https://opentdb.com/api.php?amount=1&category=23&difficulty=${rating.value}&type=multiple`,
+  );
   console.log(res);
   const data = await res.json();
   console.log(data);
   // call the next function
   useApiData(data);
-  title.remove();
+  // title.remove();
 }
+//24
 async function sendApiRequestPolitics() {
-  let res = await fetch('https://opentdb.com/api.php?amount=1&category=24');
+  let res = await fetch(
+    `https://opentdb.com/api.php?amount=1&category=24&difficulty=${rating.value}&type=multiple`,
+  );
   console.log(res);
   const data = await res.json();
   console.log(data);
   // call the next function
   useApiData(data);
-  title.remove();
+  // title.remove();
 }
 
 // api data rendering
@@ -132,10 +173,10 @@ function useApiData(data) {
   ).innerHTML = `Category: ${data.results[0].category}`;
   document.querySelector(
     '#difficulty',
-  ).innerHTML = `Category: ${data.results[0].difficulty}`;
+  ).innerHTML = `Difficulty: ${data.results[0].difficulty}`;
   document.querySelector(
     '#question',
-  ).innerHTML = `Category: ${data.results[0].question}`;
+  ).innerHTML = `Question: ${data.results[0].question}`;
   document.querySelector('#answer1').innerHTML = data.results[0].correct_answer;
   document.querySelector('#answer2').innerHTML =
     data.results[0].incorrect_answers[0];
@@ -144,7 +185,7 @@ function useApiData(data) {
   document.querySelector('#answer4').innerHTML =
     data.results[0].incorrect_answers[2];
 
-  // randomise the order of the answers button
+  // randomise the order of the answers button so that button1 not always correct_answer
   $('.quiz').html(
     $('.quiz')
       .children()
@@ -153,6 +194,7 @@ function useApiData(data) {
       }),
   );
 
+  // remove a couple of buttons if the question has a boolean mutliple choice answer
   if (
     data.results[0].correct_answer === 'True' ||
     data.results[0].correct_answer === 'False' ||
@@ -161,6 +203,7 @@ function useApiData(data) {
     button3.remove();
     button4.remove();
   }
+  // Need to restore button3 and button4 after a true or false round!!! They are missing.
 }
 
 let correctAnswer = document.getElementById('answer1');
@@ -171,17 +214,16 @@ let counter = 0;
 // listen for a click on the correctAnswer button
 correctAnswer.addEventListener('click', (e) => {
   e.preventDefault();
-  // alert('Correct! You are so smart!');
+  // alert('Correct! You are so smart!'); Now deprecated.
   // open modal with 'CORRECT' in green
-  document.getElementById('score').click()
-  document.querySelector(
-    '.scorecard',
-  ).innerHTML = "CORRECT -  use the 'X', top right, to close the pop-up and select a category to continue."
-  document.querySelector('.scorecard').style.color = 'green'
-  document.querySelector('.scorecard').style.fontSize = '2rem'
-  console.log(counter); //call 'addtoDatabase() when it's in the same project file.
+  document.getElementById('score').click();
+  document.querySelector('.scorecard').innerHTML =
+    "CORRECT! -  Click 'CONTINUE' to select your next category.";
+  document.querySelector('.scorecard').style.color = 'green';
+  document.querySelector('.scorecard').style.fontSize = '2rem';
+  console.log(counter); //call 'addtoDatabase() when it's in the same project file. ------- probably not going to do this. LocalStorage handling the in-game storage. db for leaderboard!
 
-  // add 1 to a score counter. Need to know where to send this and store it between renders. db
+  // add 1 to a score counter. Need to know where to send this and store it between renders. currently going to localStorage. db?
   counter++;
 
   // add a counter to the screen
@@ -193,8 +235,9 @@ correctAnswer.addEventListener('click', (e) => {
   // add score/counter to localStorage
   localStorage.setItem('score', counter);
 
-  // sendApiRequest();
-  // window.location.reload() // reload but also call the next question in a function plus add to the score in db
+  // reset the page
+  
+  // sendApiRequest(); to the same category as the previous question? or delete this function call
 });
 
 //listen for a click on the incorrect_answers buttons
@@ -212,19 +255,22 @@ button4.addEventListener('click', () => {
 });
 
 function gameOver() {
+  
+  button1.style.backgroundColor = 'green'
   console.log('Game Over!');
   document.getElementById('score').click();
   document.querySelector(
     '.scorecard',
   ).innerHTML = `GAME OVER! You scored: ${counter}`;
-  document.querySelector('.scorecard').style.color = 'red'
-  document.querySelector('.scorecard').style.fontSize = '3rem'
+  document.querySelector('.scorecard').style.color = 'red';
+  document.querySelector('.scorecard').style.fontSize = '3rem';
+  continueBtn.remove();
   // add score to leaderboard if higher than other 10. Take from localStorage(?) send to firestore.
 }
 
 function reload() {
   //reset localStorage
-  localStorage.removeItem('score')
+  localStorage.removeItem('score');
   // reload game
   window.location.reload();
 }
