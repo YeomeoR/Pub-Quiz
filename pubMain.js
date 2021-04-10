@@ -234,7 +234,14 @@ correctAnswer.addEventListener('click', (e) => {
   console.log(counter); //call 'addtoDatabase() when it's in the same project file. ------- probably not going to do this. LocalStorage handling the in-game storage. db for leaderboard!
 
   // add 1 to a score counter. Need to know where to send this and store it between renders. currently going to localStorage. db?
-  counter++;
+  if (rating.value === 'easy') {
+    counter +=1
+  } else if (rating.value === 'medium') {
+    counter += 2
+  } else if (rating.value === 'hard') {
+    counter += 3;
+  }
+  // counter++;
 
   // add a counter to the screen
   document.getElementById('score').innerHTML = localStorage.getItem('score');
@@ -292,7 +299,7 @@ function gameOver() {
 }
 // load a blank page 
 function reset() {
-  paras.innerText = 'Choose a category for your next question';
+  paras.innerText = 'Choose a DIFFICULTY and CATEGORY for your next question';
   button1.innerHTML = ''
   button2.innerHTML = ''
   button3.innerHTML = ''
