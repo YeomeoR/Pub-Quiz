@@ -15,6 +15,7 @@ const politics = document.querySelector('.politics');
 const newGame = document.getElementById('start-new');
 const continueBtn = document.getElementById('continue');
 const rating = document.getElementById('rating');
+const close = document.querySelector('.close')
 
 // grab the answer components
 const button1 = document.querySelector('#answer1');
@@ -36,26 +37,19 @@ history.addEventListener('click', sendApiRequestHistory);
 politics.addEventListener('click', sendApiRequestPolitics);
 newGame.addEventListener('click', reload);
 
-
-// function rating() {
-//   var1 = 'difficulty=easy'
-// }
-
-
+////////////////////////////////////////////////////
 // send api requests for each category
 async function sendApiRequestRandom() {
  
-  // console.log(rating)
   let res = await fetch(
     `https://opentdb.com/api.php?amount=1&category=11&difficulty=${rating.value}&type=multiple`,
   );
-
   console.log(res);
   const data = await res.json();
   console.log(data);
   // call the next function
   useApiData(data);
-  // title.remove();
+  // title.remove(); // does it look better with the title?
 }
 //11
 async function sendApiRequestFilm() {
@@ -165,7 +159,7 @@ async function sendApiRequestPolitics() {
   useApiData(data);
   // title.remove();
 }
-
+//////////////////////////////////////////
 // api data rendering
 function useApiData(data) {
   document.querySelector(
@@ -194,6 +188,7 @@ function useApiData(data) {
       }),
   );
 
+  // This section now no longer needed but I like it and want to fix it at some point.
   // remove a couple of buttons if the question has a boolean mutliple choice answer
   if (
     data.results[0].correct_answer === 'True' ||
@@ -203,7 +198,7 @@ function useApiData(data) {
     button3.remove();
     button4.remove();
   }
-  // Need to restore button3 and button4 after a true or false round!!! They are missing.
+  // Need to restore button3 and button4 after a true or false round!!! They are missing. [UPDATE] This is now deprecated as trueORfalse questions no longer requested from API
 }
 
 let correctAnswer = document.getElementById('answer1');
@@ -265,7 +260,11 @@ function gameOver() {
   document.querySelector('.scorecard').style.color = 'red';
   document.querySelector('.scorecard').style.fontSize = '3rem';
   continueBtn.remove();
-  // add score to leaderboard if higher than other 10. Take from localStorage(?) send to firestore.
+  close.remove();
+  setTimeout(() => {
+    reload();
+  }, 7000)
+  // Now we need to add score to leaderboard if higher than other 10. Take from localStorage(?) send to firestore.
 }
 
 function reload() {
