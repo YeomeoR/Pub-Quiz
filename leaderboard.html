@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Firebase app needed for doing anything with Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js"></script>
+    <!-- Firebase Firestore is the DB needed. not auth etc. -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-firestore.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Creepster&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="pubStyle.css" />
+    <title>Horrible-Pub, Quiz</title>
+    <link rel="shortcut icon" type="image/jpg" href="/images/favicon-16x16.png"/>
+  </head>
+  <body>
+    <div class="container">
+      <h1 id="title">Horrible-Pub, Quiz</h1>
+      <div
+        id="image"
+        class="container"
+        style="
+          background-image: url(https://i.pinimg.com/originals/38/44/86/384486f4793a9a36e9b38b4e30ffedcb.jpg);"
+        alt="Quiz"
+      >
+      <h1>leaderboard</h1>
+      <div id="wrapper">
+      <ol id="leaderboard"></ol>
+      </div>
+      <button><a href="quiz.html">Back to the quiz</a></button>
+        
+      </div>
+    </div>
+
+    <!-- Bootstrap JScript -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Firebase -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAOT5NdG_-hOs7Wl86g6yL35vERYKKwqKQ",
+    authDomain: "leaderboard-8f12b.firebaseapp.com",
+    projectId: "leaderboard-8f12b",
+    storageBucket: "leaderboard-8f12b.appspot.com",
+    messagingSenderId: "937929379222",
+    appId: "1:937929379222:web:0d383340531bd3f9fd21b7"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  // create a reference to the firebase firestore db and store it in a constant variable. We can now interact with the db with this.
+  const db = firebase.firestore();
+  // add some settings so that we don't get a warning in the console
+  db.settings({timestampsInSnapshot: true})
+</script>
+    <!-- <script src="pubMain.js"></script> -->
+    <script src="db.js"></script>
+  </body>
+</html>

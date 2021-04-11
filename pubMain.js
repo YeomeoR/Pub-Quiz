@@ -20,7 +20,9 @@ const difficulty = document.querySelector('#difficulty');
 const paras = document.querySelector('p');
 const btns = document.querySelector('.answers');
 const questionBar = document.querySelector('#question');
-const categoryBar = document.querySelector('#category')
+const categoryBar = document.querySelector('#category');
+const form = document.querySelector('#addToLeaderboard'); 
+const restart = document.querySelector('#restart')
 
 // grab the answer components
 const button1 = document.querySelector('#answer1');
@@ -41,6 +43,7 @@ geography.addEventListener('click', sendApiRequestGeography);
 history.addEventListener('click', sendApiRequestHistory);
 politics.addEventListener('click', sendApiRequestPolitics);
 newGame.addEventListener('click', reload);
+restart.addEventListener('click', reload);
 continueBtn.addEventListener('click', reset);
 
 ////////////////////////////////////////////////////
@@ -226,7 +229,7 @@ correctAnswer.addEventListener('click', (e) => {
   // open modal with 'CORRECT' in green
   document.getElementById('score').click();
   document.querySelector('.scorecard').innerHTML =
-    "CORRECT! -  Click 'CONTINUE' to select your next category.";
+    "CORRECT! - Click 'CONTINUE' to select your next category.";
   document.querySelector('.scorecard').style.color = 'green';
   document.querySelector('.scorecard').style.fontSize = '2rem';
   console.log(counter); //call 'addtoDatabase() when it's in the same project file. ------- probably not going to do this. LocalStorage handling the in-game storage. db for leaderboard!
@@ -280,7 +283,7 @@ button4.addEventListener('click', () => {
   }, 1000);
 });
 
-function gameOver() {
+function gameOver(data, results) {
   button1.style.backgroundColor = 'green';
   console.log('Game Over!');
   document.getElementById('score').click();
@@ -293,7 +296,7 @@ function gameOver() {
   close.remove();
   setTimeout(() => {
     reload();
-  }, 7000);
+  }, 12000);
   // Now we need to add score to leaderboard if higher than other 10. Take from localStorage(?) send to firestore.
 }
 // load a blank page
@@ -304,8 +307,8 @@ function reset() {
   button3.innerHTML = '';
   button4.innerHTML = '';
   questionBar.innerHTML = '';
-  categoryBar.style.backgroundColor = 'yellow'
-  categoryBar.style.color = 'red'
+  categoryBar.style.backgroundColor = 'yellow';
+  categoryBar.style.color = 'red';
   document.getElementById('score').innerHTML = localStorage.getItem('score');
   document.getElementById('score').style.color = '#fff';
   document.getElementById('score').style.fontSize = '1.5rem';
@@ -318,3 +321,15 @@ function reload() {
   // reload game
   window.location.reload();
 }
+
+// saving data to db
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  db.collection('high-scores').add({
+    name: form.name.value,
+    highScore: localStorage.getItem('score'),
+    email: form.email.value
+  });
+  form.name.value = '';
+  form.email.value = '';
+})
