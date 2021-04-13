@@ -36,17 +36,15 @@ function renderLeaderboard(doc) {
 }
 
 // accessing the db collection 'high-scores, getting the data with a promise, THEN using a callback function and passing in the 'snapshot' of data stored in the db we can access all of the data in this collection
-db.collection("high-scores")
-.orderBy("highScore", "desc").limit(10)
+db.collection("high-scores").orderBy('highScore', 'desc')
+.limit(10)
 .get()
 .then((snapshot) => {
   // console.log(snapshot.docs) this doesn't show much data. we need to cycle through the docs in the snapshot array
   snapshot.docs.forEach((doc) => {
     console.log(doc.data()); // data() is a method, here
     // call the function to render the doc and pass in the doc
-   
-
-    
+  
     
     renderLeaderboard(doc);
   });

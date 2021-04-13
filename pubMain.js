@@ -1,4 +1,5 @@
 // window.onload = sendApiRequest; *** deprecated ***
+// window.onload = scream.play();
 
 // grab different btns to send different requests
 const title = document.querySelector('#title');
@@ -23,6 +24,7 @@ const questionBar = document.querySelector('#question');
 const categoryBar = document.querySelector('#category');
 const form = document.querySelector('#addToLeaderboard'); 
 const restart = document.querySelector('#restart')
+const post = document.querySelector('#post')
 
 // grab the answer components
 const button1 = document.querySelector('#answer1');
@@ -49,6 +51,7 @@ continueBtn.addEventListener('click', reset);
 ////////////////////////////////////////////////////
 // send api requests for each category
 async function sendApiRequestRandom() {
+  // scream.play()
   let res = await fetch(
     `https://opentdb.com/api.php?amount=1&category=11&difficulty=${rating.value}&type=multiple`,
   );
@@ -325,11 +328,14 @@ function reload() {
 // saving data to db
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  db.collection('high-scores').add({
-    name: form.name.value,
-    highScore: localStorage.getItem('score'),
-    email: form.email.value
-  });
+  
+    db.collection('high-scores').add({
+      name: form.name.value,
+      highScore: parseInt(localStorage.getItem('score')),
+      email: form.email.value
+    });
+  
   form.name.value = '';
   form.email.value = '';
 })
+//////////////////////////// 

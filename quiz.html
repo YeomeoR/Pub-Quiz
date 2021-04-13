@@ -21,7 +21,11 @@
     />
     <link rel="stylesheet" href="pubStyle.css" />
     <title>Horrible-Pub, Quiz</title>
-    <link rel="shortcut icon" type="image/jpg" href="/images/favicon-16x16.png"/>
+    <link
+      rel="shortcut icon"
+      type="image/jpg"
+      href="/images/favicon-16x16.png"
+    />
   </head>
   <body>
     <div class="container">
@@ -30,7 +34,8 @@
         id="image"
         class="container"
         style="
-          background-image: url(https://i.pinimg.com/originals/38/44/86/384486f4793a9a36e9b38b4e30ffedcb.jpg);"
+          background-image: url(https://i.pinimg.com/originals/38/44/86/384486f4793a9a36e9b38b4e30ffedcb.jpg);
+        "
         alt="Quiz"
       >
         <div class="buttons">
@@ -52,7 +57,7 @@
           <button class="politics category">Politics</button>
         </div>
 
-        <div class="root"> 
+        <div class="root">
           <h5>Question:</h5>
         </div>
 
@@ -126,14 +131,14 @@
             </div>
           </div>
         </div>
-        <form action="" id="addToLeaderboard">
-          <input type="text" name="name" placeholder="Name">
-          <input type="text" name="email" placeholder="Email (optional)">
-          
+        <form action="submit" id="addToLeaderboard">
+          <input type="text" name="name" placeholder="Name" />
+          <input type="text" name="email" placeholder="Email (optional)" />
+
           <button id="post">Add Your Name & Score to the Leaderboard!</button>
         </form>
         <button id="restart">Play Again!</button>
-        <button><a href="leaderboard.html">Leaderboard</a></button>
+        <button><a href="/leaderboard.html">Leaderboard</a></button>
       </div>
     </div>
 
@@ -156,27 +161,26 @@
     <!-- Firebase -->
     <!-- The core Firebase JS SDK is always required and must be listed first -->
 
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
+    <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyAOT5NdG_-hOs7Wl86g6yL35vERYKKwqKQ",
-    authDomain: "leaderboard-8f12b.firebaseapp.com",
-    projectId: "leaderboard-8f12b",
-    storageBucket: "leaderboard-8f12b.appspot.com",
-    messagingSenderId: "937929379222",
-    appId: "1:937929379222:web:0d383340531bd3f9fd21b7"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  // create a reference to the firebase firestore db and store it in a constant variable. We can now interact with the db with this.
-  const db = firebase.firestore();
-  // add some settings so that we don't get a warning in the console
-  db.settings({timestampsInSnapshot: true})
-</script>
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: 'AIzaSyAOT5NdG_-hOs7Wl86g6yL35vERYKKwqKQ',
+        authDomain: 'leaderboard-8f12b.firebaseapp.com',
+        projectId: 'leaderboard-8f12b',
+        storageBucket: 'leaderboard-8f12b.appspot.com',
+        messagingSenderId: '937929379222',
+        appId: '1:937929379222:web:0d383340531bd3f9fd21b7',
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      // create a reference to the firebase firestore db and store it in a constant variable. We can now interact with the db with this.
+      const db = firebase.firestore();
+      // add some settings so that we don't get a warning in the console
+      db.settings({ timestampsInSnapshot: true });
+    </script>
     <script src="pubMain.js"></script>
     <!-- <script src="db.js"></script> -->
   </body>
